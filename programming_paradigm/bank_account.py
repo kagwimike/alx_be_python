@@ -1,15 +1,19 @@
+# bank_account.py
+
 class BankAccount:
     def __init__(self, initial_balance=0):
-        self.account_balance = initial_balance
+        self.account_balance = float(initial_balance)  # Ensure it's a float
 
     def deposit(self, amount):
-        self.account_balance += amount
+        self.account_balance += float(amount)
 
     def withdraw(self, amount):
-        if amount <= self.account_balance:
-            self.account_balance -= amount
+        if self.account_balance >= float(amount):
+            self.account_balance -= float(amount)
             return True
-        return False
+        else:
+            return False
 
     def display_balance(self):
-        print(f"Current Balance: ${self.account_balance}")
+        # Format balance with 2 decimal places
+        print(f"Current Balance: ${self.account_balance:.2f}")
